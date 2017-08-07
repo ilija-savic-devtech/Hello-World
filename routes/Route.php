@@ -5,6 +5,11 @@
 
         private $_uri = array();
         private $_method = array();
+        private $_logic;
+
+        public function __construct(RouteLogic $_logic){
+            $this->_logic = $_logic;
+        }
 
         public function add($uri, $method = null){
 
@@ -18,8 +23,8 @@
         public function submit(){
 
             $uriParam = $_SERVER['REQUEST_URI'];
-            RouteLogic::currentPage($uriParam, $this->_uri);
-            RouteLogic::printClasses($uriParam, $this->_method);
+            $this->_logic->currentPage($uriParam, $this->_uri);
+            $this->_logic->printClasses($uriParam, $this->_method);
 
         }
 

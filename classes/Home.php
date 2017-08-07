@@ -1,11 +1,25 @@
 <?php
     namespace classes;
     class Home{
-        private $_firstProperty;
-        private $_secondProperty;
+        private $greetMessage;
 
-        function Home(){
-
+        /**
+         * @return mixed
+         */
+        public function getGreetMessage()
+        {
+            return "Greetings message: " . $this->greetMessage . "<br>";
         }
+
+        /**
+         * @param mixed $greetMessage
+         */
+        public function setGreetMessage($greetMessage)
+        {
+            $this->greetMessage = $greetMessage;
+        }
+
+
+
     }
 ?>

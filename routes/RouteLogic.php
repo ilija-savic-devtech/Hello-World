@@ -1,9 +1,14 @@
 <?php
     namespace routes;
 
+
+    use classes\About;
+    use classes\Contact;
+    use classes\Home;
+
     class RouteLogic{
 
-        public static function currentPage($uriParam, $uri = array()){
+        public function currentPage($uriParam, $uri = array()){
 
             if(in_array($uriParam, $uri)){
                 if($uriParam == "/"){
@@ -15,25 +20,27 @@
                 echo "Page does not exist<br>";
         }
 
-        public static function printClasses($uriParam, $method = array()){
+        public function printClasses($uriParam, $method = array()){
             foreach($method as $key=>$value){
                 if($uriParam == "/" && $key == 0){
-                    echo "<pre>";
-                    print_r($value);
-                    echo "</pre>";
+                    $home = new Home();
+                    $home = $value;
+                    echo $home->getGreetMessage();
                 } elseif ($uriParam == "/about" && $key == 1){
-                    echo "<pre>";
-                    print_r($value);
-                    echo "</pre>";
+                   $about = new About();
+                   $about = $value;
+                   echo $about->getCompanyName();
+                   echo $about->getDescription();
                 } elseif ($uriParam == "/contact" && $key == 2){
-                    echo "<pre>";
-                    print_r($value);
-                    echo "</pre>";
+                   $contact = new Contact();
+                   $contact = $value;
+                   echo $contact->getPhone();
+                   echo $contact->getAdress();
                 }
             }
         }
 
-        public static function test(){
+        public function test(){
             echo "sdfsdfdsf";
         }
 }
